@@ -6,11 +6,16 @@ admin.initializeApp({
 });
 
 const verifyToken = (req, res, next) => {
-    const token = req.header('Authorization');
+    console.log("alguien pregunto")
+    console.log("el req: ", req.headers)
+    console.log(req.headers.Authorization)
+    const token = req.headers.authorization || req.headers.Authorization;
+    console.log(token)
 
     if (!token) {
         return res.status(401).json({ error: 'Unauthorized' });
     }
+
 
     admin
         .auth()

@@ -11,9 +11,13 @@ app.use(express.static("public"));
 app.set("json spaces", 2)
 app.use(express.json());
 app.use(router)
+
+////////////////////////////////////////////
+
+app.options('*', cors());
 app.use(cors());
 
-console.log(process.env.PORT)
+/////////////////////////////////////////////////////
 
 mongoose.connect(process.env.DATABASE_URL)
   .then(() => {
